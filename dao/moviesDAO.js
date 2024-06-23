@@ -17,6 +17,7 @@ export default class MoviesDAO {
 		page = 0,
 		moviesPerPage = 20,
 	} = {}) {
+
 		let query;
 
 		// Construct the query based on filters (if any)
@@ -24,11 +25,12 @@ export default class MoviesDAO {
 			if ("title" in filters) {
 				query = { $text: { $search: filters["title"] } };
 			} else if ("rated" in filters) {
-				query = { rated: { $eq: filters["rated"] } };
+				query = { "rated": { $eq: filters["rated"] } };
 			}
 		}
 
 		let cursor;
+		
 		try {
 			cursor = await movies
 				.find(query)
@@ -40,7 +42,7 @@ export default class MoviesDAO {
 
 			return { moviesList, totalNumMovies };
 		} catch (e) {
-			console.error(`Unable  to issue find command", ${e}`);
+			console.error(`Unable to issue find command", ${e}`);
 			return { moviesList: [], totalNumMovies: 0 };
 		}
 	}

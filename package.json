@@ -1,4 +1,6 @@
   {
+    
+"type": "module",
   "dependecies": {
     "express": "^4.17.1",
     "name": "movie-reviews",
