@@ -15,4 +15,3 @@ router
 
 export default router
 
-// starting the route
