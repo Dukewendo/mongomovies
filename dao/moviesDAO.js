@@ -45,4 +45,5 @@ export default class MoviesDAO {
       return { moviesList: [], totalNumMovies: 0 };
     }
   }
+  
 }
