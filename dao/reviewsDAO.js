@@ -45,7 +45,7 @@ export default class ReviewsDAO {
     }
   }
 
-  static asyncdeleteReview(reviewId, userId) {
+  static async deleteReview(reviewId, userId) {
     try{
       const deleteResponse = await reviews.deleteOne({
         _id: ObjectId(reviewId),
