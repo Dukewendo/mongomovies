@@ -14,6 +14,16 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 
 function App() {
+	const [user, setUser] = React.useState(null);
+
+	async function login(user = null) {
+		setUser(user);
+	}
+
+	async function logout() {
+		setUser(null);
+	}
+
 	return (
 		<Router>
 			<div className="App">
@@ -22,21 +32,29 @@ function App() {
 					<Navbar.Toggle aria-controls="basic-navbar-nav" />
 					<Navbar.Collapse id="basic-navbar-nav">
 						<Nav className="mr-auto">
-							<Nav.Link>
-								<Link to={"/movies"}>Movies</Link>
-							</Nav.Link>
-							<Nav.Link>
-								{false ? <a>Logout User</a> : <Link to={"/login"}>Login</Link>}
+							<Nav.Link as={Link} to={"/movies"}>
+								Movies
 							</Nav.Link>
 						</Nav>
 					</Navbar.Collapse>
 				</Navbar>
-
+				{user ? (
+					<Nav.Link as="button" onClick={logout}>
+						Logout User
+					</Nav.Link>
+				) : (
+					<Nav.Link as={Link} to="/login">
+						Login
+					</Nav.Link>
+				)}
 				<Routes>
-					<Route exact path="/" component={MoviesList} />
-					<Route path="/movies/:id" component={Movie} />
-					<Route path="/add-review/:id" component={AddReview} />
-					<Route path="/login" component={Login} />
+					<Route path="/" element={<MoviesList />} />
+					<Route
+						path="/movies/:id/review"
+						element={<AddReview user={user} />}
+					/>
+					<Route path="/movies/:id/" element={<Movie user={user} />} />
+					<Route path="/login" element={<Login login={login} />} />
 				</Routes>
 			</div>
 		</Router>
