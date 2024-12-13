@@ -35,3 +35,12 @@ const retrieveRatings = () => {
 			console.log(e);
 		});
 };
+
+const onChangeSearchTitle = (e) => {
+	const searchTitle = e.target.value;
+	setSearchTitle(searchTitle);
+};
+
+const onChangeSearchRating = (e) => {
+	const searchRating = e.target.valuesetSearchRating(searchRating);
+};
