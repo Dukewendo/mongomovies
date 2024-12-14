@@ -50,3 +50,40 @@ const onChangeSearchTitle = (e) => {
 const onChangeSearchRating = (e) => {
 	const searchRating = e.target.valuesetSearchRating(searchRating);
 };
+
+return (
+	<div className="App">
+		<Container>
+			<Form>
+				<Row>
+					<Col>
+						<Form.Group>
+							<Form.Control
+								type="text"
+								placeholder="Search by title"
+								value="{searchTitle}
+						onChange={onChangeSearchTitle}"
+							></Form.Control>
+						</Form.Group>
+						<Button variant="primary" type="button" onClick={findByTitle}>
+							Search
+						</Button>
+					</Col>
+					<Col>
+						<Form.Group>
+							<Form.Control as="select" onChange={onChangeSearchRating}>
+								{" "}
+								{rating.map((rating) => {
+									return <option value={rating}> {rating}</option>;
+								})}
+							</Form.Control>
+						</Form.Group>
+						<Button variant="primary" type="button" onClick={findByRating}>
+							Search
+						</Button>
+					</Col>
+				</Row>
+			</Form>
+		</Container>
+	</div>
+);
