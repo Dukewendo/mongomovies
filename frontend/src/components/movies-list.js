@@ -73,57 +73,58 @@ const findByRating = () => {
 	} else {
 		find(searchRaing, "rated");
 	}
+	return (
+		<div className="App">
+			<Container>
+				<Form>
+					<Row>
+						<Col>
+							<Form.Group>
+								<Form.Control
+									type="text"
+									placeholder="Search by title"
+									value="{searchTitle}
+						onChange={onChangeSearchTitle}"
+								></Form.Control>
+							</Form.Group>
+							<Button variant="primary" type="button" onClick={findByTitle}>
+								Search
+							</Button>
+						</Col>
+						<Col>
+							<Form.Group>
+								<Form.Control as="select" onChange={onChangeSearchRating}>
+									{" "}
+									{rating.map((rating) => {
+										return <option value={rating}> {rating}</option>;
+									})}
+								</Form.Control>
+							</Form.Group>
+							<Button variant="primary" type="button" onClick={findByRating}>
+								Search
+							</Button>
+						</Col>
+					</Row>
+				</Form>
+				<Row>
+					{movies.map((movie) => {
+						return (
+							<Col>
+								<Card style={{ width: "18rem" }}>
+									<Card.Img src={movie.poster + "/100px180"} />
+									<Card.Body>
+										<Card.title>{movie.title}</Card.title>
+										<Card.Text>Rating: {movie.rated}</Card.Text>
+										<Link to={"/movies/" + movie._id}> View Reviews </Link>
+									</Card.Body>
+								</Card>
+							</Col>
+						);
+					})}
+				</Row>
+			</Container>
+		</div>
+	);
 };
 
-return (
-	<div className="App">
-		<Container>
-			<Form>
-				<Row>
-					<Col>
-						<Form.Group>
-							<Form.Control
-								type="text"
-								placeholder="Search by title"
-								value="{searchTitle}
-						onChange={onChangeSearchTitle}"
-							></Form.Control>
-						</Form.Group>
-						<Button variant="primary" type="button" onClick={findByTitle}>
-							Search
-						</Button>
-					</Col>
-					<Col>
-						<Form.Group>
-							<Form.Control as="select" onChange={onChangeSearchRating}>
-								{" "}
-								{rating.map((rating) => {
-									return <option value={rating}> {rating}</option>;
-								})}
-							</Form.Control>
-						</Form.Group>
-						<Button variant="primary" type="button" onClick={findByRating}>
-							Search
-						</Button>
-					</Col>
-				</Row>
-			</Form>
-			<Row>
-				{movies.map((movie) => {
-					return (
-						<Col>
-							<Card style={{ width: "18rem" }}>
-								<Card.Img src={movie.poster + "/100px180"} />
-								<Card.Body>
-									<Card.title>{movie.title}</Card.title>
-									<Card.Text>Rating: {movie.rated}</Card.Text>
-									<Link to={"/movies/" + movie._id}> View Reviews </Link>
-								</Card.Body>
-							</Card>
-						</Col>
-					);
-				})}
-			</Row>
-		</Container>
-	</div>
-);
+export default App;
