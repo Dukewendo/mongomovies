@@ -112,7 +112,7 @@ const MoviesList = (props) => {
 									<Card style={{ width: "18rem" }}>
 										<Card.Img src={movie.poster + "/100px180"} />
 										<Card.Body>
-											<Card.title>{movie.title}</Card.title>
+											<Card.Title>{movie.title}</Card.Title>
 											<Card.Text>Rating: {movie.rated}</Card.Text>
 											<Link to={"/movies/" + movie._id}> View Reviews </Link>
 										</Card.Body>
