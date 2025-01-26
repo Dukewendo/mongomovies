@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import MovieDataService from "../services/movies";
-import Link { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 
@@ -31,7 +31,7 @@ const Movie = props => {
 
 	return (
 		<div>
-			
+
 		</div>
 	)
 }
